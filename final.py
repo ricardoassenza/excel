@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 
 origem =  r"C:\Users\52414463899\Documents\Copia\03-Razão_Energia-Mar25_copia.xlsx"
-destino = r"C:\Users\52414463899\Documents\Copia\fornecedores2025_copia.xlsx"
+destino = r"C:\Users\52414463899\Documents\Copia\Controle _Fornecedores_2025_copia.xlsx"
 
 
 aba_origem = 'base_filtrada'
