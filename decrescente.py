@@ -31,7 +31,7 @@ def ordem_decrescente(caminho):
             dados.append((nome, total))
 
     
-    dados_ordenados = sorted(dados, key=lambda x: x[1], reverse=True)
+    dados_ordenados = sorted(dados, key=lambda x: x[1], reverse=False)
 
     
     if "Ordenado" in wb.sheetnames:
