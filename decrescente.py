@@ -1,6 +1,6 @@
 from openpyxl import load_workbook
 
-def ordem_decrescente(caminho):
+def ordem_decrescente(caminho, aba):
     wb = load_workbook(caminho)
     ws = wb["Tabela"]
 
@@ -22,7 +22,7 @@ def ordem_decrescente(caminho):
     if coluna_nome is None or coluna_total is None:
         raise ValueError("Não foi possível encontrar as colunas 'Rótulos de Linha' e 'Total Geral'")
 
-    
+
     dados = []
     for row in ws.iter_rows(min_row=2, values_only=True):
         nome = row[coluna_nome]
@@ -30,27 +30,34 @@ def ordem_decrescente(caminho):
         if nome and isinstance(total, (int, float)):
             dados.append((nome, total))
 
-    
+
     dados_ordenados = sorted(dados, key=lambda x: x[1], reverse=False)
 
-    
-    if "Ordenado" in wb.sheetnames:
-        del wb["Ordenado"]
-    ws_out = wb.create_sheet("Ordenado")
-    ws_out.append(["fornecedores", "total"])
 
+    if aba in wb.sheetnames:
+        del wb[aba]
+    ws_out = wb.create_sheet(aba)
+
+
+    # Cabeçalho com 4 colunas
+    ws_out.append(["Fornecedor", "Acum. 2025", "Frequência", "Finalidade"])
+
+    # Adiciona os dados com colunas vazias para frequência e finalidade
     for item in dados_ordenados:
-        ws_out.append(item)
+        ws_out.append([item[0], item[1], "", ""])
 
     def exclui_dados(item, coluna, aba):
         ws = wb[aba]
         for row in range(ws.max_row, 1, -1):
             status = ws.cell(row=row, column=coluna).value
-            if status and item in status.upper():
+            if status and item in status:
                 ws.delete_rows(row)
 
-    exclui_dados('BETZ', 1, 'Ordenado')
-    exclui_dados('SIEMENS', 1, 'Ordenado')     
+    exclui_dados('BETZ', 1, aba)
+    exclui_dados('SIEMENS', 1, aba)
+    exclui_dados('Total Geral', 1, aba)
+    exclui_dados('VENTOS PARAZINHENSES', 1, aba)
+         
 
     wb.save(caminho)
     print('ok')

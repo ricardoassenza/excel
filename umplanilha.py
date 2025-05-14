@@ -10,9 +10,9 @@ def filtra(caminho):
     itens_coluna_E = ['GD - PECUARIA SERRAMAR', 'GD - BRASILIA', 'GD - SANTA RITA', 'SERVENG ENERGIAS IMOBILIARIA']
 
     filtro_final = leitor[
+        (leitor['Periodo'] == 2503) &
         (leitor['DescDRE'] == 'Custos e Despesas Operacionais') &
         (leitor['AgrupadorTipoRateio'] == 'Operacional') &
-        (leitor['Periodo'] == 2503) &
         (~leitor['DescRubrica'].isin(itens_coluna_V)) &
         (leitor['NomeCliFor'].notna()) &
         (leitor['DescricaoFilial'].notna()) &
