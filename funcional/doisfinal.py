@@ -33,4 +33,4 @@ def transferencia(caminho_origem, caminho_destino):
     book.save(caminho_destino)
 
     print(f'Dados serão colados a partir da linha: {linha_inicio}')
-         
+

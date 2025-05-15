@@ -15,5 +15,5 @@ def filtro_filtrada(caminho):
     exclui_dados('COMPANHIA', 26, 'Base')        
       
     wb.save(caminho)        
-    print('ok')        
+    print('filtros removidos')        
 

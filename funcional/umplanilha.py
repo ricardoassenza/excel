@@ -22,7 +22,7 @@ def filtra(caminho):
     with pd.ExcelWriter(caminho, engine='openpyxl', mode='a') as writer:
         filtro_final.to_excel(writer, sheet_name='base_filtrada', index=False)
 
-    print('feito')
+    print('filtros feitos')
 
 
 ###############################################################################################################

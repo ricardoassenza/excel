@@ -16,4 +16,4 @@ def atualiza_dinamicas(caminho):
     wb.Close()
     excel.Quit()
 
-    print('done')
+    print('dinamica atualizada')

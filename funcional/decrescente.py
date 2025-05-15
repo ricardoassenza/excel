@@ -57,9 +57,12 @@ def ordem_decrescente(caminho, aba):
     exclui_dados('SIEMENS', 1, aba)
     exclui_dados('Total Geral', 1, aba)
     exclui_dados('VENTOS PARAZINHENSES', 1, aba)
+    exclui_dados('BRADESCO', 1, aba)
+    exclui_dados('ITAU', 1, aba)
+    exclui_dados('SERVENG CIVILSAN', 1, aba)
          
 
     wb.save(caminho)
-    print('ok')
+    print('ordem decrescente finalizada')
 
 
